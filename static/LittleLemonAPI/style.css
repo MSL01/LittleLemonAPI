@@ -1,0 +1,308 @@
+section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-transform: uppercase;
+}
+#home{
+    position: relative;
+    z-index: -1;
+}
+#video{
+    position: absolute;
+    width: 100%;
+    background-size: cover;
+    z-index: -1;
+}
+.content {
+    position: absolute;
+    bottom: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+    z-index: -1;
+}
+#About{
+    position: relative;
+    background-image: url('images/amigos.jpg');
+    background-size: cover;
+    z-index: -1;
+}
+.about-cont{
+
+    position: absolute;
+    top: 90px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+#Menu{
+    background-image: url('images/plano.jpg');
+    background-size: cover;
+}
+#Contact{
+    position: relative;
+}
+.img-cont{
+    background-image: url('images/lemon3.jpg');
+    background-size: cover;
+
+}
+.contact-info{
+    position: absolute;
+    top: 90px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+
+.part1{
+    position: absolute;
+    left: 450px;
+    top: 100px;
+    color: #f1f1f1;
+
+}
+
+.part2{
+    position: absolute;
+    left: 450px;
+    top: 200px;
+    color: #f1f1f1;
+}
+
+.part3{
+    position: absolute;
+    left: 450px;
+    top: 300px;
+    color: #f1f1f1;
+
+}
+
+.part4{
+    position: absolute;
+    left: 800px;
+    top: 100px;
+    color: #f1f1f1;
+}
+.imglemon {
+    position: fixed;
+    right: 90%;
+    bottom: 88%;
+}
+
+.search{
+    border: 1px solid black;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 0.1%;
+    padding-top: 1%;
+    bottom: 5%;
+    position: fixed;
+    left: 75%;
+    background-color: rgba(125, 200, 153, 0.5);
+    z-index: 2;
+}
+
+#foodlabel{
+    position: absolute;
+    top: 1280px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: rgba(50, 50, 50, 0.5);
+}
+#drinkslabel{
+    position: absolute;
+    top: 1400px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+
+#coffeelabel{
+    position: absolute;
+    top: 1520px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+
+#snackslabel{
+    position: absolute;
+    top: 1640px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+
+#config{
+    width: 100%;
+    position: fixed;
+}
+
+nav ul {
+    height: 70px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav li {
+    position: relative;
+}
+
+a:link, a:visited {
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+a:hover {
+    border-radius: 20px 35px;
+    color:#ffcc00;
+    background-color: #5c636a;
+}
+nav a {
+    display: block;
+    padding: 1rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+nav .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none;
+    z-index: 2;
+    border-radius: 25px 35px;
+    height: auto;
+
+}
+
+nav .dropdown li {
+    display: block;
+    width: auto;
+}
+
+nav .dropdown li a {
+    background-color: rgba(100, 100, 100, 0.5);
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 25px 35px;
+    border: 0.5px solid black;
+}
+
+nav li:hover .dropdown {
+    display: block;
+    text-align: center;
+    width: 200px;
+}
+
+#profile{
+    padding-left: 195px;
+    padding-top: 80px;
+    background-color: rgba(145, 145, 145, 0.8);
+}
+.profile-set1{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 600px;
+    border-radius: 25px 45px;
+    background-color: rgba(58, 74, 116, 0.8);
+    margin-left: 20px;
+}
+
+.namepos{
+    margin-top: 25px;
+    margin-left: 35px;
+}
+.imgpos{
+    margin-top: 35px;
+    margin-left: 170px;
+}
+#photo{
+    width: 210px;
+    height: 210px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+.profile-set2{
+    background-color: rgba(229, 229, 229, 0.9);
+    margin-left: -60px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 40%;
+    border-radius: 25px 45px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+.editprofile{
+    font-family: Consolas;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+.nombreprofile{
+    border: 1px solid black;
+    border-radius: 35px 65px;
+    width: 300px;
+    margin: 10px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.usermenucont{
+    background-color: rgba(230, 230, 230, 0.7);
+    border-radius: 45px 75px;
+    display: flex;
+    width: 320px;
+    padding-left: 20px;
+    padding-right: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+.purchase{
+    padding-top: 3px;
+    margin-bottom: 30px;
+    background-color: rgba(164, 218, 197, 0.7);
+    text-align: center;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
+
+.containermenu{
+    margin-top: 150px;
+    margin-left: 30px;
+    position: relative;
+    display: inline-block;
+    background-color: rgba(200, 167, 184, 0.55);
+    height: 30%;
+    width: 30%;
+}
+
+#showmenu{
+    padding-top: 10%;
+}
+
+.table{
+    border-top: 1px solid black;
+}

@@ -1,0 +1,98 @@
+{% load static %}
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'LittleLemonAPI/css/bootstrap.css' %}" />
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'LittleLemonAPI/style.css' %}" />
+<header>
+    <title>Cart</title>
+</header>
+{% block content %}
+    <nav>
+        <div class="nav" id="config" style="z-index: 2; background-color: rgba(100, 100, 100, 0.5)">
+            <div class="container">
+                {% if user.is_authenticated %}
+                    <ul>
+                        <li class="Home"><a class="" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                        <li class="About"><a class="" href="{% url 'home' %}#About">About</a></li>
+                        <li class="Menu"><a class="" href="{% url 'home' %}#Menu">Menu</a></li>
+                        <li class="Contact"><a class="" href="{% url 'home' %}#Contact">Contact</a></li>
+                        <div class="usermenucont">
+                            <a  href="{% url 'Cart' %}" style="display: flex; justify-content: space-between; align-items: center; height: 65px;">
+                                <li><img style="width: 40px; height: 40px;" src="{% static 'LittleLemonAPI/images/purchase.png' %}"></li>
+                                <p class="purchase">{{ cartItems }}</p>
+                            </a>
+                            <li><img class="rounded-circle account-img" style="width: 40px; height: 40px" src="{{ user.profile.avatar.url }}" alt="{{ profile.user.username }}'s avatar"><a href="#">{{ user.username }}</a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'Profile' username=user.username %}">Profile</a></li>
+                                    <li><a href="{% url 'Add_Menu' %}">Add Items menu</a></li>
+                                    <li><a href="{% url 'Add_Category' %}">Add Category</a></li>
+                                    <li><a href="">View Items Menu</a></li>
+                                    <li><a href="">View Categories</a></li>
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                    </ul>
+                {% else %}
+                    <ul>
+                        <li class="Home"><a class="" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                        <li class="About"><a class="" href="{% url 'home' %}#About">About</a></li>
+                        <li class="Menu"><a class="" href="{% url 'home' %}#Menu">Menu</a></li>
+                        <li class="Contact"><a class="" href="{% url 'home' %}#Contact">Contact</a></li>
+                        <li class="login"><a class="" href="{% url 'login' %}">Login</a></li>
+                        <li class="sign_up"><a class="" href="{% url 'Sign_Up' %}">Sign Up</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="row" style="position: relative; top: 100px; margin-bottom: 150px; width: 90%; left: 5%;">
+        <div class="col-lg-12">
+            <div class="box-element" style="border: 0.5px solid black; box-shadow: 5px 5px 8px black; padding: 15px">
+                <a  class="btn btn-outline-danger" style="color: black" href="{% url 'Menu' %}">&#x2190; Continue Shopping</a>
+                <br>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th><h5>Items: <strong>{{ cartItems }}</strong></h5></th>
+                        <th><h5>Total:<strong> ${{ total }}</strong></h5></th>
+                        <th>
+                            <a  style="float:right; margin:5px;" class="btn btn-success" href="">Checkout</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        <br>
+
+        <div class="box-element" style="border: 0.5px solid black; box-shadow: 5px 5px 8px black; padding: 15px">
+            <div class="cart-row">
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th><h5>Items</h5></th>
+                        <th><h5>Price</h5></th>
+                        <th><h5>Quantity</h5></th>
+                        <th><h5>Total</h5></th>
+                    </tr>
+                    {% for item in items %}
+                        <tr>
+                            <th><img style="width: 25px; height: 25px;" src="{{ item.product.image.url }}"></th>
+                            <th><p>{{ item.product.title }}</p></th>
+                            <th><p>${{ item.product.price }}</p></th>
+                            <th><p>{{ item.quantity }}</p></th>
+                            <th>
+                                <p>${{ item.get_total }}</p>
+                            </th>
+                            <th>
+                                <img style="width: 15px; height: 15px;" src="{% static 'LittleLemonAPI/images/3+arrow-up.png' %}">
+                                <img style="width: 15px; height: 15px;" src="{% static 'LittleLemonAPI/images/2+arrow-down.png' %}">
+                            </th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,30 @@
+<style>
+    .btnre{
+        color:#fff;
+        background-color: #0f5132;
+        outline: none;
+        border: 0;
+        margin-left: 40%;
+        color: #fff;
+        padding:10px 20px;
+        text-transform:uppercase;
+        margin-top:50px;
+        border-radius:2px;
+        cursor:pointer;
+    }
+</style>
+
+<div class="container">
+    <div class="cuadroR">
+        <h1 style="text-align: center">Add Menu</h1>
+        <div class="panelregistro">
+            {% block content %}
+            <form method="post">
+                {% csrf_token %}
+                    {{ form.as_p }}
+                <button type="submit" class="btnre">Registrar</button>
+            </form>
+            {% endblock %}
+        </div>
+    </div>
+</div>

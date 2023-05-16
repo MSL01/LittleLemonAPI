@@ -1,0 +1,81 @@
+{% block content %}
+{% if user.is_authenticated %}
+    <html>
+        {% load static %}
+        <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'LittleLemonAPI/css/bootstrap.css' %}" />
+        <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'LittleLemonAPI/style.css' %}" />
+        <header>
+            <nav>
+                <div class="nav" id="config" style="z-index: 2; background-color: rgba(100, 100, 100, 0.5)">
+                    <div class="container">
+                        <ul>
+                            <li class="Home"><a class="" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                            <li class="About"><a class="" href="{% url 'home' %}#About">About</a></li>
+                            <li class="Menu"><a class="" href="{% url 'home' %}#Menu">Menu</a></li>
+                            <li class="Contact"><a class="" href="{% url 'home' %}#Contact">Contact</a></li>
+                            <div class="usermenucont">
+                                <a style="display: flex; justify-content: space-between; align-items: center; height: 65px;">
+                                    <li><img style="width: 40px; height: 40px;" src="{% static 'LittleLemonAPI/images/purchase.png' %}"></li>
+                                    <p class="purchase">{{ cartItems }}</p>
+                                </a>
+                                <li><img class="rounded-circle account-img" style="width: 40px; height: 40px" src="{{ user.profile.avatar.url }}" alt="{{ profile.user.username }}'s avatar"><a href="#">{{ user.username }}</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{% url 'Profile' username=user.username %}">Profile</a></li>
+                                        <li><a href="{% url 'Add_Menu' %}">Add Items menu</a></li>
+                                        <li><a href="{% url 'Add_Category' %}">Add Category</a></li>
+                                        <li><a href="">View Items Menu</a></li>
+                                        <li><a href="">View Categories</a></li>
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <body>
+            <section id="profile">
+                <div class="profile-set1">
+                    <div class="namepos">
+                        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                    </div>
+                    <div class="imgpos">
+                        <img class="rounded-circle account-img" id="photo" src="{{ user.profile.avatar.url }}" alt="{{ profile.user.username }}'s avatar">
+                        <br><a style="margin-top: 10px; border: 1px solid black; border-radius: 20px 35px; background-color: rgba(100, 100, 100, 0.5);" href="{% url 'change_avatar' %}">Change profile image</a>
+                    </div>
+                </div>
+                <div class="profile-set2">
+                    <article>
+                        <h1 style="text-align: center;">My Profile</h1>
+                        <div class="editprofile">
+                            <label>First Name:</label>
+                            <div class="nombreprofile">
+                                {{ user.first_name }}
+                            </div>
+                            <label>Last Name:</label>
+                            <div class="nombreprofile">
+                                {{ user.last_name }}
+                            </div>
+                            <label>Username:</label>
+                            <div class="nombreprofile">
+                                {{ user.username }}
+                            </div>
+                            <label>Email:</label>
+                            <div class="nombreprofile">
+                                {{ user.email }}
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </body>
+    </html>
+{% else %}
+
+{% endif %}
+{% endblock %}

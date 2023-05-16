@@ -1,0 +1,104 @@
+{% load static %}
+<html>
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'LittleLemonAPI/css/bootstrap.css' %}" />
+
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'LittleLemonAPI/style.css' %}" />
+
+{% include 'LittleLemonAPI/navbar.html' %}
+
+<style>
+    .messages{
+        position: center;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: #0f5132;
+        color: #b6d4fe;
+    }
+    .btn{
+        color:#fff;
+        background-color:#e74c3c;
+        outline: none;
+        color: #fff;
+        text-transform:uppercase;
+        border-radius:2px;
+    }
+</style>
+<section id="Home">
+    <video autoplay muted loop id="video">
+    <source src="static/LittleLemonAPI/images/food.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
+    <div class="content">
+        <h1 style="text-align: center; font-family: Consolas">Little Lemon Gourmet Food</h1>
+        <p></p>
+    </div>
+</section>
+<section id="About">
+    <div class="about-cont">
+        <h1 style="text-align: center; font-family: Consolas; font: bold;">About</h1>
+        <p  style="text-align: center; font-family: Consolas">Welcome to our restaurant! We are dedicated to providing you with an exceptional
+            dining experience that will leave you feeling satisfied and delighted.<br>
+            Our restaurant offers a warm and inviting atmosphere where you can enjoy delicious food,
+            excellent service, and a relaxing ambiance.<br> Our chefs use only the freshest and finest
+            ingredients to prepare our mouthwatering dishes. From our appetizers to our desserts,
+            every dish is made with care and attention to detail. <br>We pride ourselves on our diverse
+            menu that offers something for everyone, from classic favorites to innovative new dishes
+            that are sure to tantalize your taste buds. Our friendly and attentive staff is always
+            ready to serve you with a smile, ensuring that your dining experience is nothing short of perfect.
+            Whether you're looking for a romantic night out, a family dinner, or a celebration
+            with friends, our restaurant is the perfect choice.<br>
+            We also offer catering services for special events and parties, so you can
+            enjoy our delicious food no matter where you are. And don't forget to ask about
+            our daily specials and promotions to make your dining experience even more enjoyable.
+            <br>Thank you for choosing our restaurant. We look forward to serving you soon!</p>
+    </div>
+</section>
+
+<section id="Contact" class="img-cont">
+    <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>We would love to hear from you! If you have any questions or feedback,
+            please don't hesitate to get in touch with us. You can reach us by phone,
+            email, or through the contact form below.</p>
+        <div class="phone" >
+            <h3>Phone</h3>
+            <p>[insert phone number here]</p>
+        </div>
+        <div class="email">
+            <h3>Email</h3>
+            <p><a href="[insert email address here]">[insert email address here]</a></p>
+        </div>
+        <div class="address">
+            <h3>Address</h3>
+            <p>[Insert restaurant address here]</p>
+        </div>
+        <div class="hours">
+            <h3>Hours of Operation</h3>
+            <p>[Insert restaurant hours here]</p>
+        </div>
+        <div class="part1" style="z-index: 1">
+            <label for="name">Name</label><br>
+            <input type="text" id="name" name="name" style="z-index: 1" required>
+        </div>
+        <div class="part2">
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="part3">
+            <label for="subject">Subject</label><br>
+            <input type="text" id="subject" name="subject" required><br><br><br>
+            <button type="submit" class="btn">Send</button>
+        </div>
+        <div class="part4">
+            <label for="message">Message</label><br>
+            <textarea style="width: 400px; height: 270px;" id="message" name="message" required></textarea>
+        </div>
+    </div>
+</section>
+<script TYPE="text/javascript" src="{% static 'LittleLemonAPI/dynamic_nav.js' %}"></script>
+<script TYPE="text/javascript" src="{% static 'LittleLemonAPI/changescroll.js' %}"></script>
+</html>

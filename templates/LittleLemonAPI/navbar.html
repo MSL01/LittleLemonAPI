@@ -1,0 +1,52 @@
+{% load static %}
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'LittleLemonAPI/style.css' %}" />
+<nav>
+    <div class="nav" id="config" style="z-index: 2">
+        <div class="container">
+        {% block content %}
+            {% if user.is_authenticated %}
+                <ul>
+                    <li class="Home"><a class="" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                    <li class="About"><a class="" href="#About">About</a></li>
+                    <li class="Menu"><a class="" href="{% url 'Menu' %}">Menu</a></li>
+                    <li class="Contact"><a class="" href="#Contact">Contact</a></li>
+                    <div class="usermenucont">
+                        <a style="display: flex; justify-content: space-between; align-items: center; height: 65px;" href="{% url 'Cart' %}">
+                            <li><img style="width: 40px; height: 40px;" src="{% static 'LittleLemonAPI/images/purchase.png' %}"></li>
+                            <p class="purchase">{{ cartItems }}</p>
+                        </a>
+                        <li><img class="rounded-circle account-img" style="width: 40px; height: 40px" src="{{ user.profile.avatar.url }}" alt="{{ profile.user.username }}'s avatar"><a href="#">{{ user.username }}</a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'Profile' username=user.username %}">Profile</a></li>
+                                <li><a href="{% url 'Add_Menu' %}">Add Items menu</a></li>
+                                <li><a href="{% url 'Add_Category' %}">Add Category</a></li>
+                                <li><a href="">View Items Menu</a></li>
+                                <li><a href="">View Categories</a></li>
+                                <li><a href="{% url 'logout' %}">Logout</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                </ul>
+            {% else %}
+                <ul>
+                    <li class="Home"><a class="" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                    <li class="About"><a class="" href="#About">About</a></li>
+                    <li class="Menu"><a class="" href="{% url 'Menu' %}">Menu</a></li>
+                    <li class="Contact"><a class="" href="#Contact">Contact</a></li>
+                    <li class="login"><a class="" href="{% url 'login' %}">Login</a></li>
+                    <li class="sign_up"><a class="" href="{% url 'Sign_Up' %}">Sign Up</a></li>
+                </ul>
+            {% endif %}
+        {% endblock %}
+        </div>
+    </div>
+</nav>
+
+<div class="search" id="search">
+    <form class="d-flex"  action="{% url 'Search' %}" method="GET">
+        <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-danger" type="submit">Search</button>
+    </form>
+</div>

@@ -1,0 +1,70 @@
+{% load static %}
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'LittleLemonAPI/css/bootstrap.css' %}" />
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'LittleLemonAPI/style.css' %}" />
+<header>
+    <title>Menu LittleLemon</title>
+</header>
+{% include 'LittleLemonAPI/navbar.html' %}
+<body style="background-color: #6c757d">
+    <div class="filtering">
+
+    </div>
+    <div class="container" style="padding-top: 10%; display: flex; flex-wrap: wrap">
+    {% if items %}
+        {% for item in items %}
+            <div class="card" style="width: 30%; margin: 10px; text-align: center">
+                <h2>{{ item.title }}</h2>
+                <img style="" src="{{ item.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body bg-light">
+                    <h5 class="card-title">Category: {{ item.category }}</h5>
+                    <p class="card-text">Price: {{ item.price }}</p>
+                    <p class="card-text">Price after Tax: </p>
+                    <button data-product="{{ item.id }}" data-action="add" class="add-to-cart" ">Add to cart</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No se encontraron resultados.</p>
+    {% endif %}
+    </div>
+    <div class="pagination" style="margin-left: 15%; margin-top: 1%">
+        <span class="step-links">
+            <ul class="pagination justify-content-center">
+                {% if items.has_previous %}
+                    <a style="color: #000; border: 0.5px solid black" href="{% url 'Menu' %}?page={{ items.previous_page_number }}">Anterior</a>
+                {% endif %}
+                    {% for page in items.paginator %}
+                        <li class="page-item"><a style="color: #000;" class="page-link" href="{% url 'Menu' %}?page={{ page.number }}">{{ page.number }}</a></li>
+                    {% endfor %}
+                {% if items.has_next %}
+                    <a style="color: #000; border: 0.5px solid black" href="{% url 'Menu' %}?page={{ items.next_page_number }}">Siguiente</a>
+                {% endif %}
+            </ul>
+        </span>
+    </div>
+<script TYPE="text/javascript" src="{% static 'LittleLemonAPI/cart.js' %}"></script>
+<script type="text/javascript">
+    var user = '{{ request.user }}'
+    function getToken(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getToken('csrftoken');
+</script>
+</body>
+</html>
